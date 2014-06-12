@@ -1,0 +1,374 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+
+namespace AskFm_Increaser
+{
+    
+    public partial class Main : Form
+    {
+
+        string Built_in_ids = "ay7aga7aram\nGersy_every_where\nrapidusinggghghnn\nwweunified\nbootse\nsoftwareengineer\ncolonelkas\nkolnalaha\nexpendablez\nyasmeennono\njoshmacintyre\nWesayno2drugs\nFlexisa\nSandoson12\njustdofuc3kss12xa\nwww4r\nMixnaya\nTradeLik0ers\nAymanezzII\nIbrahimTt\nblackattak\nthewariojers\neliminationchamberz\nwakem3up\ngersy2\nfadlshaker1\nnowomennocryz\nneverforgetneverforgiveano\nhatemedonorclonelove\nletsgotoprison\nwhyapp\nblackberyz\nwegivegiftss\naskmetoz\nitjustonedead\njackmichealz\nwithoutnoname\nspinxASkFmBot846ZrT4N85\nasasdadasdafsaf\nbadworldx\nMidoProblems\nbentnasawee\nmernaelsayedxx\nDaliaEmadXD\nahmedyounesxp\nsadooooooo0\nsalmalozy\na7medbenladen\nsayedsikato\nA7medJamal\n";
+       
+        public Main()
+        {
+
+            //About a = new About("V 0.0.1", 5);
+            //a.Show();
+
+            InitializeComponent();
+            //a.Close();
+        }
+        private void SaveYourdata()
+        {
+            if (System.IO.File.Exists(Application.StartupPath.ToString() + @"\store.txt"))
+                return;
+            else
+                System.IO.File.WriteAllText( (Application.StartupPath.ToString() + @"\store.txt")  ,  Built_in_ids);
+
+        }
+        private void SaveYourdata(string new_id)
+        {
+            if (System.IO.File.Exists(Application.StartupPath.ToString() + @"\store.txt"))
+                return;
+            else
+                System.IO.File.WriteAllText((Application.StartupPath.ToString() + @"\store.txt"), Built_in_ids+@"\n"+new_id);
+
+        }
+        private void Main_Load(object sender, EventArgs e)
+        {
+            FillComboBox();
+            this.ClientSize = new System.Drawing.Size(900, 370);
+
+            if (textBox1.Text != "")
+            {
+                Just_Go();
+
+                label1.Text = "Loading ..";
+            }
+            timer4.Start();
+        }
+        string[] list_ = new string[99];
+        private void FillComboBox()
+        {
+                
+                list_=Built_in_ids.Split(new char [] {'\n'});
+
+            comboBox1.DataSource = list_;
+
+ 
+        }
+        private void export()
+        {
+            foreach (string x in list_)
+            {
+                System.IO.File.WriteAllText(x + "\n", Application.StartupPath + @"\store.txt");
+            }
+        }
+        private void export(string x2)
+        {
+            string ___ = Application.StartupPath + "\\store.txt";
+            foreach (string x in list_)
+            {
+                System.IO.File.WriteAllText(x + @"\n",___);
+            }
+            System.IO.File.WriteAllText(x2 + "\n", Application.StartupPath + @"\store.txt");
+        }
+        private void Timer1_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                this.WebBrowser1.Document.GetElementsByTagName("input")[1].InvokeMember("click");
+
+            }
+            catch (Exception er)
+            {
+                label1.Text=er.Message;
+            }
+            
+            this.Timer1.Stop();
+
+        }
+
+        private void Timer2_Tick(object sender, EventArgs e)
+        {
+            IEnumerator enumerator =null;
+            HtmlElementCollection elementsByTagName = this.WebBrowser1.Document.GetElementsByTagName("Input");
+            try
+            {
+                enumerator = elementsByTagName.GetEnumerator();
+                while (enumerator.MoveNext())
+                {
+                    HtmlElement current = (HtmlElement)enumerator.Current;
+                    if (current.GetAttribute("Value").ToString() == "View more")
+                    {
+                        current.InvokeMember("click");
+                    }
+                }
+            }
+            finally
+            {
+                if (enumerator is IDisposable)
+                {
+                    (enumerator as IDisposable).Dispose();
+                }
+            }
+
+        }
+
+        private void Timer3_Tick(object sender, EventArgs e)
+        {
+            IEnumerator enumerator=null;
+            HtmlElementCollection elementsByTagName = this.WebBrowser1.Document.GetElementsByTagName("a");
+            try
+            {
+                enumerator = elementsByTagName.GetEnumerator();
+                while (enumerator.MoveNext())
+                {
+                    HtmlElement current = (HtmlElement)enumerator.Current;
+                    if (current.GetAttribute("hint").ToString() == "Like")
+                    {
+                        current.InvokeMember("click");
+                    }
+                }
+            }
+            finally
+            {
+                if (enumerator is IDisposable)
+                {
+                    (enumerator as IDisposable).Dispose();
+                }
+            }
+
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            About a = new About("V 0.0.1");
+            a.Show();
+        }
+
+        private void Button4_Click(object sender, EventArgs e)
+        {
+            Just_Go();
+        }
+        private void Just_Go()
+        {
+            btn_increase.Show();
+            if (textBox1.Text == "" || textBox1.Text == "http://ask.fm/" || textBox1.Text == "http://ask.fm")
+            {
+                MessageBox.Show("Invalid URL", "YasserGersy");
+                return;
+            }
+            if (textBox1.Text.Contains("ask.fm") == false)
+                MessageBox.Show("You are going out of ask.fm ", "YasserGersy");
+            this.WebBrowser1.Navigate(this.textBox1.Text);
+            btn_increase.Show();
+            label1.Text = "Visiting >>" + textBox1.Text;
+        
+        }
+
+        private void btn_logout_and_register_Click(object sender, EventArgs e)
+        {
+            IEnumerator enumerator=null;
+            this.Timer2.Stop();
+            this.Timer3.Stop();
+            HtmlElementCollection elementsByTagName = this.WebBrowser1.Document.GetElementsByTagName("Input");
+            try
+            {
+                enumerator = elementsByTagName.GetEnumerator();
+                while (enumerator.MoveNext())
+                {
+                    HtmlElement current = (HtmlElement)enumerator.Current;
+                    if (current.GetAttribute("Value").ToString() == "")
+                    {
+                        current.InvokeMember("click");
+                    }
+                }
+            }
+            finally
+            {
+                if (enumerator is IDisposable)
+                {
+                    (enumerator as IDisposable).Dispose();
+                }
+            }
+            this.Timer1.Start();
+            label1.Text = "Attemping To Logout";
+        }
+
+
+
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            IEnumerator enumerator=null;
+            this.Timer2.Stop();
+            this.Timer3.Stop();
+            HtmlElementCollection elementsByTagName = this.WebBrowser1.Document.GetElementsByTagName("Input");
+            try
+            {
+                enumerator = elementsByTagName.GetEnumerator();
+                while (enumerator.MoveNext())
+                {
+                    HtmlElement current = (HtmlElement)enumerator.Current;
+                    if (current.GetAttribute("Value").ToString() == "")
+                    {
+                        current.InvokeMember("click");
+                    }
+                }
+            }
+            finally
+            {
+                if (enumerator is IDisposable)
+                {
+                    (enumerator as IDisposable).Dispose();
+                }
+            }
+            this.Timer1.Start();
+        }
+        private string ReturnuserName()
+        {
+            try
+            {
+                string[] result = textBox1.Text.Split(new char[] { '/' });
+
+                for (int i = 0; i < result.Length; i++)
+                {
+                    if (result[i].Contains("fm"))
+                        return result[i + 1];
+
+                }
+
+            }
+
+            catch (Exception ex)
+            {
+                label1.Text = ex.Message;
+
+                
+            }
+
+            return textBox1.Text;
+        }
+        private void Button3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int x = this.WebBrowser1.Document.GetElementsByTagName("input").Count;
+                if (x < 9)
+                {
+                    MessageBox.Show("LogInFirst", "YasserGersy");
+                    return;
+                }
+                this.Timer2.Start();
+                this.Timer3.Start();
+                btn_logout_and_register.Show();
+                label1.Text = "Loading Likes to > " + ReturnuserName();
+            }
+            catch (Exception __x) { label1.Text = __x.Message; }
+        }
+
+        private void WebBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+
+        }
+        int ticks = 0;
+        private void timer4_Tick(object sender, EventArgs e)
+        {
+            ticks++;
+            label1.Text += "..";
+            if (ticks == 50)
+            {
+                WebBrowser1.Show();
+                panel1.Show();
+                label1.Text = "Visiting   >>  " + textBox1.Text;
+                timer4.Stop();
+            }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            btn_logout_and_register.Hide();
+            this.ClientSize = new System.Drawing.Size(1050, 370);
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            btn_logout_and_register.Show();
+            btn_increase.Show();
+
+            this.ClientSize = new System.Drawing.Size(936, 408);
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (list_[comboBox1.SelectedIndex].ToString().Contains(":"))
+                {
+                    string[] info = list_[comboBox1.SelectedIndex].ToString().Split(new char [] {':'});
+
+                    WebBrowser1.Document.GetElementById("login").InnerText = info[0]; 
+                    WebBrowser1.Document.GetElementById("password").InnerText = info[1];
+                    label1.Text = " loging using : " + info[0] + "   password:" + info[1];
+                    return;
+                }
+
+               WebBrowser1.Document.GetElementById("login").InnerText = list_[comboBox1.SelectedIndex].ToString(); 
+                WebBrowser1.Document.GetElementById("password").InnerText = "y1a2s3s4";
+                WebBrowser1.Document.GetElementById("logBox_submit-button").InvokeMember("click"); 
+                label1.Text = " loging using : " + list_[comboBox1.SelectedIndex].ToString()+"   password*****" ;
+            }
+            catch (Exception ex)
+            {
+                label1.Text = " please  make sure you are logged out and press on the green 'log in'  button before using built-In-Ids ";
+
+            }
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            btn_about.Show();
+            btn_go.Show();
+            btn_increase.Show();
+            btn_logout_and_register.Show();
+            panel1.Show();
+            WebBrowser1.Show();
+        }
+
+        private void btn_add_new_user_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "")
+            {
+                btn_go.Hide();
+                btn_increase.Hide();
+                panel1.Hide();
+            }
+            else
+            {
+                btn_go.Show();
+                btn_increase.Show();
+                panel1.Show();
+                btn_increase.Show();
+            }
+        }
+
+        
+
+ 
+
+
+
+    }
+}
