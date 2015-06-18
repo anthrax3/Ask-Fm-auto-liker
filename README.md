@@ -1,23 +1,20 @@
-Ask-Fm-auto-liker
+Ask-Fm-auto-liker</h2>
 =================
+<h3> Description </h3>
 this is a small script allows u to perform likes on Ask.fm in a while
+</br>
 
-What is ASK.FM?
-Social Network for asking and answering 
+<h3>What is ASK.FM?</h3>
+Social Network for asking and answering </br>
 
-How it works?
+
+<h3>How it works?</h3>
 
 run this script on your browser console using F12
 then paste it and hit enter while standing on the page of the profile u wnat to increase likes 
 
-note 
+<h3>note <h3>
  .... profile u want increase likes  , u must log in with another account 
  
  
  
- script 
- 
- 
- var x = document.getElementsByClassName('like hintable'); 
-for (var i=0 ; i<9 ; i++) 
-x[i].click();
